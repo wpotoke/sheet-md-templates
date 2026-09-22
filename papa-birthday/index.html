@@ -2,74 +2,104 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#0e1726">
+<meta name="theme-color" content="#0d1522">
 <title>Папе — с днём рождения!</title>
 <style>
 :root{
-  --bg:#0d1522;--bg2:#17283f;--panel:#18283d;--text:#fffaf2;--muted:#b8c2cf;
-  --gold:#f2c86f;--gold2:#ffe6a4;--green:#8fd9a5;--red:#ff9f9f;
+  --bg:#0d1522;--bg2:#182940;--panel:#17263a;--text:#fffaf1;--muted:#b8c3cf;
+  --gold:#f2c76d;--gold2:#ffe6a2;--green:#8fd9a5;--red:#ff9d9d;
+  --sq:min(8.45vw,34px)
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--text);
-background:linear-gradient(180deg,var(--bg),var(--bg2) 58%,#09111d)}
-body{min-height:100svh;overscroll-behavior:none}
+html{-webkit-text-size-adjust:100%;touch-action:manipulation}
+html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+color:var(--text);background:linear-gradient(180deg,var(--bg),var(--bg2) 60%,#09111c)}
+body{min-height:100svh;overscroll-behavior:none;touch-action:manipulation}
 button{font:inherit}
-.app{width:min(680px,100%);margin:auto;padding:max(16px,env(safe-area-inset-top)) 10px max(32px,env(safe-area-inset-bottom))}
-.hero{text-align:center;padding:7px 8px 16px}
-.kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);margin-bottom:8px}
-.hero h1{font-size:clamp(30px,8vw,50px);line-height:1.05;margin:0 0 8px}
+.app{width:min(680px,100%);margin:auto;padding:max(14px,env(safe-area-inset-top)) 8px max(30px,env(safe-area-inset-bottom))}
+.hero{text-align:center;padding:6px 8px 14px}
+.kicker{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);margin-bottom:7px}
+.hero h1{font-size:clamp(29px,8vw,48px);line-height:1.05;margin:0 0 7px}
 .hero p{margin:0;color:var(--muted);font-size:14px;line-height:1.45}
-.card{background:#17263a;border:1px solid rgba(255,255,255,.1);border-radius:26px;padding:17px 11px 21px;box-shadow:0 22px 55px rgba(0,0,0,.26)}
-.start{text-align:center;padding:14px 8px 8px}
-.start .icon{font-size:54px;margin-bottom:7px}
-.start h2{font-size:27px;margin:0 0 10px}
-.start p{max-width:500px;margin:0 auto;color:var(--muted);line-height:1.55}
-.rules{max-width:500px;margin:17px auto 3px;padding:13px 15px;border-radius:16px;background:rgba(255,255,255,.045);
-border:1px solid rgba(255,255,255,.08);line-height:1.5;color:#dfe5ec}
+.card{background:#17263a;border:1px solid rgba(255,255,255,.1);border-radius:25px;padding:16px 9px 20px;
+box-shadow:0 18px 45px rgba(0,0,0,.23)}
+.start{text-align:center;padding:13px 8px 7px}
+.start .icon{font-size:52px;margin-bottom:6px}
+.start h2{font-size:26px;margin:0 0 9px}
+.start p{max-width:520px;margin:0 auto;color:var(--muted);line-height:1.52}
+.rules{max-width:510px;margin:16px auto 2px;padding:13px 14px;border-radius:16px;background:rgba(255,255,255,.045);
+border:1px solid rgba(255,255,255,.08);line-height:1.48;color:#dfe5ec;font-size:14px}
 .btn{border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.075);color:var(--text);
-border-radius:999px;padding:11px 16px;font-weight:800}
-.btn.primary{background:linear-gradient(135deg,var(--gold),#ffe8ad);color:#21190b;border:0}
-.start .btn{margin-top:15px;padding:13px 22px;font-size:16px}
+border-radius:999px;padding:11px 16px;font-weight:800;touch-action:manipulation}
+.btn.primary{background:linear-gradient(135deg,var(--gold),#ffe7aa);color:#21190a;border:0}
+.start .btn{margin-top:14px;padding:13px 22px;font-size:16px}
 .game{display:none}
-.topline{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.topline{display:flex;align-items:center;gap:10px;margin-bottom:11px}
 .progress{height:7px;flex:1;background:rgba(255,255,255,.07);border-radius:999px;overflow:hidden}
-.progress span{display:block;height:100%;width:20%;background:linear-gradient(90deg,var(--gold),#fff0bc);transition:width .25s}
+.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),#fff0bd);transition:width .22s}
 .count{font-size:12px;color:var(--muted);white-space:nowrap}
-.label{text-align:center;font-size:13px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
-.cells{display:flex;justify-content:center;flex-wrap:wrap;gap:7px;min-height:50px;margin:0 0 8px}
-.cell{width:40px;height:46px;border-radius:9px 9px 5px 5px;background:rgba(255,255,255,.055);
-border-bottom:3px solid rgba(255,255,255,.4);display:grid;place-items:center;font-size:22px;font-weight:900;transition:.18s}
-.cell.hint{color:var(--gold2);border-color:var(--gold);background:rgba(242,200,111,.12)}
-.cell.solved{color:#07160c;background:var(--green);border-color:var(--green)}
-.current{height:32px;text-align:center;font-size:19px;font-weight:900;letter-spacing:.13em;color:var(--gold2);margin-top:2px}
-.board{width:min(326px,88vw);aspect-ratio:1;margin:0 auto 0;position:relative;touch-action:none;user-select:none;-webkit-user-select:none}
-.ring{position:absolute;inset:14%;border-radius:50%;border:1px solid rgba(255,255,255,.09);
-background:radial-gradient(circle,rgba(255,255,255,.065),rgba(255,255,255,.018) 65%,transparent 66%)}
+.sectionTitle{text-align:center;font-size:12px;color:var(--muted);letter-spacing:.11em;text-transform:uppercase;margin:1px 0 9px}
+
+.crossword{
+  display:grid;
+  grid-template-columns:repeat(9,var(--sq));
+  grid-template-rows:repeat(9,var(--sq));
+  gap:3px;
+  justify-content:center;
+  margin:0 auto 13px;
+  touch-action:manipulation;
+}
+.cwcell{
+  width:var(--sq);height:var(--sq);position:relative;border-radius:5px;
+  display:grid;place-items:center;font-size:min(4.8vw,19px);font-weight:900;
+  background:#f8f5ed;color:#0b1624;border:1px solid rgba(0,0,0,.06);
+  transition:background .12s,transform .12s,box-shadow .12s
+}
+.cwcell.blank{background:transparent;border:0}
+.cwcell.prefill{color:#725111;background:#ffe5a0}
+.cwcell.active{box-shadow:0 0 0 2px var(--gold) inset}
+.cwcell.solved{background:var(--green);color:#08160d}
+.num{position:absolute;top:1px;left:2px;font-size:7px;font-weight:900;opacity:.65;line-height:1}
+
+.clues{display:flex;flex-direction:column;gap:6px;max-width:570px;margin:0 auto 12px}
+.clue{
+  position:relative;width:100%;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.045);
+  color:#e9edf2;border-radius:13px;padding:10px 11px 10px 38px;text-align:left;line-height:1.38;font-size:14px;
+  touch-action:manipulation
+}
+.clue .n{position:absolute;left:11px;top:10px;width:19px;height:19px;border-radius:50%;display:grid;place-items:center;
+font-size:10px;font-weight:900;background:rgba(255,255,255,.09);color:var(--gold2)}
+.clue.active{border-color:rgba(242,199,109,.58);background:rgba(242,199,109,.09)}
+.clue.done{border-color:rgba(143,217,165,.25);background:rgba(143,217,165,.07)}
+.clue.done::after{content:"✓";position:absolute;right:11px;top:9px;color:var(--green);font-weight:900}
+.clue b{color:var(--gold2)}
+
+.current{height:29px;text-align:center;font-size:18px;font-weight:900;letter-spacing:.13em;color:var(--gold2)}
+.board{width:min(318px,86vw);aspect-ratio:1;margin:0 auto;position:relative;touch-action:none;user-select:none;-webkit-user-select:none}
+.ring{position:absolute;inset:15%;border-radius:50%;border:1px solid rgba(255,255,255,.09);
+background:radial-gradient(circle,rgba(255,255,255,.06),rgba(255,255,255,.018) 66%,transparent 67%)}
 .board svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-#trace{fill:none;stroke:var(--gold);stroke-width:11;stroke-linecap:round;stroke-linejoin:round;opacity:.88}
-.letter{position:absolute;width:56px;height:56px;margin:-28px 0 0 -28px;border:0;border-radius:50%;padding:0;
-background:#fffdf7;color:#0b1624;display:grid;place-items:center;font-size:24px;font-weight:900;
-box-shadow:0 8px 18px rgba(0,0,0,.28);z-index:2;transition:transform .08s,background .08s}
-.letter.active{background:var(--gold);transform:scale(1.08)}
-.status{min-height:23px;text-align:center;color:var(--muted);font-size:13px;margin-top:-1px}
-.status.ok{color:var(--green)} .status.bad{color:var(--red)}
-.actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:8px}
-.saved{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-top:14px;min-height:30px}
-.chip{padding:6px 9px;border-radius:999px;background:rgba(242,200,111,.11);border:1px solid rgba(242,200,111,.2);
-color:var(--gold2);font-size:12px;font-weight:800}
-.final{display:none;text-align:center;padding:15px 7px 6px}
-.final .emoji{font-size:58px}
-.final h2{font-size:clamp(31px,8vw,52px);margin:6px 0 16px}
-.final p{max-width:600px;margin:0 auto 20px;font-size:20px;line-height:1.62;font-weight:650}
+#trace{fill:none;stroke:var(--gold);stroke-width:11;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+.letter{position:absolute;width:52px;height:52px;margin:-26px 0 0 -26px;border:0;border-radius:50%;padding:0;
+background:#fffdf7;color:#0b1624;display:grid;place-items:center;font-size:22px;font-weight:900;
+box-shadow:0 7px 16px rgba(0,0,0,.25);z-index:2}
+.letter.active{background:var(--gold);transform:scale(1.07)}
+.status{min-height:22px;text-align:center;color:var(--muted);font-size:13px;margin-top:-2px}
+.status.ok{color:var(--green)}.status.bad{color:var(--red)}
+.actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:7px}
+.final{display:none;text-align:center;padding:14px 6px 5px}
+.final .emoji{font-size:56px}
+.final h2{font-size:clamp(31px,8vw,51px);margin:6px 0 15px}
+.final p{max-width:600px;margin:0 auto 20px;font-size:19px;line-height:1.62;font-weight:640}
 .final strong{color:var(--gold2)}
-.confetti{position:fixed;top:-18px;width:8px;height:15px;border-radius:3px;z-index:99;pointer-events:none;animation:fall linear forwards}
-@keyframes fall{to{transform:translate(var(--dx),110vh) rotate(640deg)}}
-@media(max-width:430px){
- .app{padding-left:7px;padding-right:7px}.card{border-radius:23px;padding:15px 8px 19px}
- .cell{width:35px;height:41px;font-size:19px}.letter{width:52px;height:52px;margin:-26px 0 0 -26px;font-size:22px}
- .final p{font-size:18px}
+.confetti{position:fixed;top:-16px;width:7px;height:13px;border-radius:3px;z-index:99;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translate(var(--dx),108vh) rotate(540deg)}}
+
+@media(max-width:350px){
+ :root{--sq:27px}.cwcell{font-size:16px}.clue{font-size:13px}
+ .board{width:min(292px,88vw)}.letter{width:48px;height:48px;margin:-24px 0 0 -24px;font-size:20px}
 }
 </style>
 </head>
@@ -78,40 +108,41 @@ color:var(--gold2);font-size:12px;font-weight:800}
   <header class="hero">
     <div class="kicker">для папы</div>
     <h1>С днём рождения!</h1>
-    <p>Пять секретных слов. Они и соберут поздравление.</p>
+    <p>Один кроссворд. Пять слов. А подсказки — это само поздравление.</p>
   </header>
 
   <main class="card">
     <section class="start" id="start">
       <div class="icon">🎁</div>
-      <h2>Открой поздравление</h2>
-      <p>Соединяй буквы пальцем, как в игре «Слова». В каждом раунде нужно собрать одно слово.</p>
-      <div class="rules">В кружке есть лишние буквы, а несколько клеток уже открыты. Если застрянешь — нажми «Открыть букву».</div>
+      <h2>Собери поздравление</h2>
+      <p>Все ответы пересекаются в одном кроссворде. Выбирай подсказку и собирай ответ буквами в круге.</p>
+      <div class="rules">Несколько букв уже стоят на пересечениях. Если не получается — можно открыть ещё одну букву. Ответ сразу появится в кроссворде.</div>
       <button class="btn primary" id="startBtn" type="button">Начать</button>
     </section>
 
     <section class="game" id="game">
       <div class="topline">
         <div class="progress"><span id="progress"></span></div>
-        <div class="count" id="count">1 / 5</div>
+        <div class="count" id="count">0 / 5</div>
       </div>
 
-      <div class="label">секретное слово</div>
-      <div class="cells" id="cells"></div>
-      <div class="current" id="current"></div>
+      <div class="sectionTitle">кроссворд</div>
+      <div class="crossword" id="crossword"></div>
 
+      <div class="sectionTitle">подсказки</div>
+      <div class="clues" id="clues"></div>
+
+      <div class="current" id="current"></div>
       <div class="board" id="board">
         <div class="ring"></div>
         <svg viewBox="0 0 330 330" preserveAspectRatio="none"><polyline id="trace" points=""></polyline></svg>
       </div>
 
-      <div class="status" id="status">Зажми первую букву и веди пальцем дальше.</div>
+      <div class="status" id="status">Выбери подсказку.</div>
       <div class="actions">
         <button class="btn" id="hintBtn" type="button">Открыть букву</button>
         <button class="btn" id="shuffleBtn" type="button">Перемешать</button>
       </div>
-
-      <div class="saved" id="saved"></div>
     </section>
 
     <section class="final" id="final">
@@ -120,31 +151,72 @@ color:var(--gold2);font-size:12px;font-weight:800}
       <p>
         Сегодня день рождения у самого <strong>лучшего</strong>, самого <strong>смешного</strong>
         и самого <strong>крепкого</strong> папы на свете!<br><br>
-        Желаем тебе крепкого здоровья, много сил, удачи и побольше хороших дней.
-        Оставайся таким же весёлым, сильным и родным.<br><br>
-        Поздравляем и очень-очень тебя <strong>любим!</strong> ❤️
+        Желаем тебе крепкого здоровья, сил, спокойствия, удачи и побольше поводов смеяться.
+        Пусть рядом всегда будут люди, которые тебя ценят и любят.<br><br>
+        Поздравляем и очень тебя <strong>любим!</strong> ❤️
       </p>
-      <button class="btn primary" id="restartBtn" type="button">Ещё раз</button>
+      <button class="btn primary" id="restartBtn" type="button">Пройти ещё раз</button>
     </section>
   </main>
 </div>
 
 <script>
 (() => {
-  const levels = [
-    {word:"ЛУЧШЕГО", letters:["Л","У","Ч","Ш","Е","Г","О","А","Р"], open:[0,3]},
-    {word:"СМЕШНОГО", letters:["С","М","Е","Ш","Н","О","Г","О","А"], open:[1,4,7]},
-    {word:"КРЕПКОГО", letters:["К","Р","Е","П","К","О","Г","О","А"], open:[0,3,6]},
-    {word:"ПАПЫ", letters:["П","А","П","Ы","К","Р"], open:[1]},
-    {word:"ЛЮБИМ", letters:["Л","Ю","Б","И","М","А","Р"], open:[0,3]}
+  const answers = [
+    {
+      n:1, word:"ЛУЧШЕГО", row:3, col:2, dir:"H",
+      clue:"Сегодня день рождения у самого <b>________</b>...",
+      extras:["А","Р"]
+    },
+    {
+      n:2, word:"СМЕШНОГО", row:0, col:5, dir:"V",
+      clue:"...самого <b>________</b>...",
+      extras:["А"]
+    },
+    {
+      n:3, word:"КРЕПКОГО", row:5, col:0, dir:"H",
+      clue:"...и самого <b>________</b>...",
+      extras:["А"]
+    },
+    {
+      n:4, word:"ПАПЫ", row:5, col:3, dir:"V",
+      clue:"...<b>____</b> на свете.",
+      extras:["К","Р"]
+    },
+    {
+      n:5, word:"ЛЮБИМ", row:1, col:1, dir:"H",
+      clue:"Поздравляем и очень <b>_____</b>!",
+      extras:["А","Р"]
+    }
   ];
 
   const start=document.getElementById("start"), game=document.getElementById("game"), final=document.getElementById("final");
-  const cells=document.getElementById("cells"), board=document.getElementById("board"), trace=document.getElementById("trace");
-  const current=document.getElementById("current"), status=document.getElementById("status"), progress=document.getElementById("progress");
-  const count=document.getElementById("count"), saved=document.getElementById("saved");
+  const crossword=document.getElementById("crossword"), clues=document.getElementById("clues");
+  const board=document.getElementById("board"), trace=document.getElementById("trace"), current=document.getElementById("current");
+  const status=document.getElementById("status"), progress=document.getElementById("progress"), count=document.getElementById("count");
 
-  let level=0, shown=new Set(), nodes=[], selected=[], dragging=false, pointer={x:0,y:0}, raf=0, completed=[];
+  const cellMap=new Map();
+  const solved=new Set();
+  const revealed=new Map();
+  const prefilled=new Set();
+  let active=0,nodes=[],selected=[],dragging=false,pointer={x:0,y:0},raf=0;
+
+  function key(r,c){return r+","+c}
+
+  answers.forEach((a,ai)=>{
+    [...a.word].forEach((ch,i)=>{
+      const r=a.row+(a.dir==="V"?i:0), c=a.col+(a.dir==="H"?i:0), k=key(r,c);
+      if(!cellMap.has(k)) cellMap.set(k,{r,c,ch,members:[],starts:[]});
+      const cell=cellMap.get(k);
+      cell.members.push(ai);
+      if(i===0) cell.starts.push(a.n);
+    });
+  });
+
+  for(const [k,c] of cellMap){
+    if(c.members.length>1) prefilled.add(k);
+  }
+  answers.forEach((a,i)=>revealed.set(i,new Set()));
 
   function shuffle(a){
     const b=[...a];
@@ -152,48 +224,82 @@ color:var(--gold2);font-size:12px;font-weight:800}
     return b;
   }
 
-  function setup(){
-    const L=levels[level];
-    shown=new Set(L.open);
-    selected=[]; dragging=false;
-    count.textContent=(level+1)+" / "+levels.length;
-    progress.style.width=((level+1)/levels.length*100)+"%";
-    status.textContent="Зажми первую букву и веди пальцем дальше.";
+  function answerCells(ai){
+    const a=answers[ai], out=[];
+    [...a.word].forEach((_,i)=>out.push(key(a.row+(a.dir==="V"?i:0),a.col+(a.dir==="H"?i:0))));
+    return out;
+  }
+
+  function isCellVisible(k,cell){
+    if(prefilled.has(k)) return true;
+    if(cell.members.some(i=>solved.has(i))) return true;
+    return cell.members.some(i=>{
+      if(i!==active) return false;
+      const arr=answerCells(i);
+      return revealed.get(i).has(arr.indexOf(k));
+    });
+  }
+
+  function renderCrossword(){
+    crossword.innerHTML="";
+    for(let r=0;r<9;r++){
+      for(let c=0;c<9;c++){
+        const k=key(r,c), data=cellMap.get(k);
+        const el=document.createElement("div");
+        if(!data){el.className="cwcell blank";crossword.appendChild(el);continue}
+        const activeCell=data.members.includes(active) && !solved.has(active);
+        const solvedCell=data.members.some(i=>solved.has(i));
+        const pref=prefilled.has(k) && !solvedCell;
+        el.className="cwcell"+(activeCell?" active":"")+(solvedCell?" solved":pref?" prefill":"");
+        if(isCellVisible(k,data)) el.append(document.createTextNode(data.ch));
+        if(data.starts.length){
+          const n=document.createElement("span");n.className="num";n.textContent=data.starts.join("/");
+          el.appendChild(n);
+        }
+        el.addEventListener("click",()=>{
+          const target=data.members.find(i=>!solved.has(i));
+          if(target!==undefined) setActive(target);
+        });
+        crossword.appendChild(el);
+      }
+    }
+  }
+
+  function renderClues(){
+    clues.innerHTML="";
+    answers.forEach((a,i)=>{
+      const b=document.createElement("button");
+      b.type="button";
+      b.className="clue"+(i===active&&!solved.has(i)?" active":"")+(solved.has(i)?" done":"");
+      b.innerHTML='<span class="n">'+a.n+'</span>'+a.clue;
+      b.onclick=()=>{if(!solved.has(i)) setActive(i)};
+      clues.appendChild(b);
+    });
+  }
+
+  function updateProgress(){
+    count.textContent=solved.size+" / "+answers.length;
+    progress.style.width=(solved.size/answers.length*100)+"%";
+  }
+
+  function setActive(i){
+    active=i; resetSelection(); renderCrossword(); renderClues(); renderWheel();
+    status.textContent="Собери ответ на подсказку №"+answers[i].n+".";
     status.className="status";
-    renderCells(); renderLetters(shuffle(L.letters)); renderSaved(); resetSelection();
   }
 
-  function renderCells(solved=false){
-    const w=levels[level].word;
-    cells.innerHTML="";
-    [...w].forEach((ch,i)=>{
-      const c=document.createElement("div");
-      c.className="cell"+(solved?" solved":shown.has(i)?" hint":"");
-      c.textContent=solved||shown.has(i)?ch:"";
-      cells.appendChild(c);
-    });
-  }
-
-  function renderSaved(){
-    saved.innerHTML="";
-    completed.forEach(w=>{
-      const x=document.createElement("span");
-      x.className="chip"; x.textContent=w;
-      saved.appendChild(x);
-    });
-  }
-
-  function renderLetters(chars){
+  function renderWheel(){
     board.querySelectorAll(".letter").forEach(x=>x.remove());
     nodes=[];
-    const n=chars.length, cx=165, cy=165;
-    const r=n<=6?112:n<=8?118:122;
+    const a=answers[active];
+    const chars=shuffle([...a.word,...a.extras]);
+    const n=chars.length,cx=165,cy=165,r=n<=6?112:n<=8?119:123;
     chars.forEach((ch,i)=>{
-      const a=-Math.PI/2 + Math.PI*2*i/n;
-      const x=cx+Math.cos(a)*r, y=cy+Math.sin(a)*r;
+      const angle=-Math.PI/2+Math.PI*2*i/n;
+      const x=cx+Math.cos(angle)*r,y=cy+Math.sin(angle)*r;
       const b=document.createElement("button");
-      b.type="button"; b.className="letter"; b.textContent=ch;
-      b.style.left=(x/330*100)+"%"; b.style.top=(y/330*100)+"%";
+      b.type="button";b.className="letter";b.textContent=ch;
+      b.style.left=(x/330*100)+"%";b.style.top=(y/330*100)+"%";
       board.appendChild(b);
       nodes.push({el:b,char:ch,x,y});
     });
@@ -201,129 +307,131 @@ color:var(--gold2);font-size:12px;font-weight:800}
 
   function resetSelection(){
     selected.forEach(n=>n.el.classList.remove("active"));
-    selected=[]; dragging=false; current.textContent=""; trace.setAttribute("points","");
+    selected=[];dragging=false;current.textContent="";trace.setAttribute("points","");
   }
 
   function addNode(n){
-    if(!n || selected.includes(n)) return;
-    selected.push(n); n.el.classList.add("active");
+    if(!n||selected.includes(n)) return;
+    selected.push(n);n.el.classList.add("active");
     current.textContent=selected.map(v=>v.char).join("");
-    drawNow();
+    draw();
   }
 
   function hit(x,y){
-    const r=board.getBoundingClientRect(); let best=null, bd=Infinity;
-    const radius=Math.max(31,r.width*.092);
+    const r=board.getBoundingClientRect();let best=null,bd=Infinity;
+    const radius=Math.max(29,r.width*.09);
     for(const n of nodes){
-      const nx=r.left+n.x/330*r.width, ny=r.top+n.y/330*r.height;
+      const nx=r.left+n.x/330*r.width,ny=r.top+n.y/330*r.height;
       const d=Math.hypot(x-nx,y-ny);
-      if(d<radius && d<bd){best=n;bd=d}
+      if(d<radius&&d<bd){best=n;bd=d}
     }
     return best;
   }
 
   function boardPoint(x,y){
     const r=board.getBoundingClientRect();
-    return {x:(x-r.left)/r.width*330,y:(y-r.top)/r.height*330};
+    return{x:(x-r.left)/r.width*330,y:(y-r.top)/r.height*330};
   }
 
-  function drawNow(){
+  function draw(){
     const pts=selected.map(n=>n.x+","+n.y);
-    if(dragging && selected.length) pts.push(pointer.x+","+pointer.y);
+    if(dragging&&selected.length)pts.push(pointer.x+","+pointer.y);
     trace.setAttribute("points",pts.join(" "));
   }
 
   function scheduleDraw(){
-    if(raf) return;
-    raf=requestAnimationFrame(()=>{raf=0;drawNow()});
+    if(raf)return;
+    raf=requestAnimationFrame(()=>{raf=0;draw()});
   }
 
-  function begin(e){
-    const n=hit(e.clientX,e.clientY);
-    if(!n) return;
-    resetSelection();
-    dragging=true;
+  board.addEventListener("pointerdown",e=>{
+    const n=hit(e.clientX,e.clientY);if(!n)return;
+    resetSelection();dragging=true;pointer=boardPoint(e.clientX,e.clientY);addNode(n);
+    board.setPointerCapture?.(e.pointerId);e.preventDefault();
+  },{passive:false});
+
+  board.addEventListener("pointermove",e=>{
+    if(!dragging)return;
     pointer=boardPoint(e.clientX,e.clientY);
-    addNode(n);
-    board.setPointerCapture?.(e.pointerId);
-    e.preventDefault();
-  }
+    const n=hit(e.clientX,e.clientY);if(n)addNode(n);
+    scheduleDraw();e.preventDefault();
+  },{passive:false});
 
-  function move(e){
-    if(!dragging) return;
-    pointer=boardPoint(e.clientX,e.clientY);
-    const n=hit(e.clientX,e.clientY);
-    if(n) addNode(n);
-    scheduleDraw();
-    e.preventDefault();
-  }
-
-  function finish(e){
-    if(!dragging) return;
+  board.addEventListener("pointerup",e=>{
+    if(!dragging)return;
     dragging=false;
     const attempt=selected.map(v=>v.char).join("");
-    const target=levels[level].word;
-    if(attempt===target){
-      renderCells(true);
-      status.textContent="Верно!";
+    if(attempt===answers[active].word){
+      solved.add(active);
+      status.textContent="Правильно!";
       status.className="status ok";
-      completed.push(target);
-      renderSaved();
+      updateProgress();renderCrossword();renderClues();
       setTimeout(()=>{
-        if(level===levels.length-1){showFinal()}
-        else {level++;setup()}
-      },650);
+        resetSelection();
+        if(solved.size===answers.length){showFinal();return}
+        const next=answers.findIndex((_,i)=>!solved.has(i));
+        setActive(next);
+      },520);
     }else{
-      status.textContent=attempt ? "Не то слово. Попробуй ещё раз." : "Попробуй ещё раз.";
+      status.textContent=attempt?"Не то слово. Посмотри на подсказку ещё раз.":"Попробуй ещё раз.";
       status.className="status bad";
-      setTimeout(resetSelection,420);
+      setTimeout(resetSelection,380);
     }
     e.preventDefault();
-  }
+  },{passive:false});
 
-  board.addEventListener("pointerdown",begin,{passive:false});
-  board.addEventListener("pointermove",move,{passive:false});
-  board.addEventListener("pointerup",finish,{passive:false});
   board.addEventListener("pointercancel",resetSelection);
 
   document.getElementById("hintBtn").onclick=()=>{
-    const w=levels[level].word;
-    const hidden=[...w].map((_,i)=>i).filter(i=>!shown.has(i));
-    if(!hidden.length){status.textContent="Все буквы уже открыты.";return}
-    shown.add(hidden[0]); renderCells();
-    status.textContent="Открыл ещё одну букву."; status.className="status";
+    if(solved.has(active))return;
+    const cellsFor=answerCells(active),shown=revealed.get(active);
+    const hidden=cellsFor.map((k,i)=>i).filter(i=>!shown.has(i)&&!prefilled.has(cellsFor[i]));
+    if(!hidden.length){status.textContent="Здесь уже открыты все подсказки.";return}
+    shown.add(hidden[0]);renderCrossword();
+    status.textContent="Открыл ещё одну букву.";status.className="status";
   };
 
   document.getElementById("shuffleBtn").onclick=()=>{
-    resetSelection(); renderLetters(shuffle(levels[level].letters));
-    status.textContent="Буквы перемешаны."; status.className="status";
+    resetSelection();renderWheel();
+    status.textContent="Буквы перемешаны.";status.className="status";
   };
 
   document.getElementById("startBtn").onclick=()=>{
-    start.style.display="none"; game.style.display="block"; completed=[]; level=0; setup();
+    start.style.display="none";game.style.display="block";
+    active=0;solved.clear();answers.forEach((a,i)=>revealed.set(i,new Set()));
+    updateProgress();setActive(0);
   };
 
   function showFinal(){
-    game.style.display="none"; final.style.display="block"; confetti();
+    game.style.display="none";final.style.display="block";confetti();
   }
 
   function confetti(){
-    const colors=["#f2c86f","#fff0bd","#8fd9a5","#8ebcff","#ff9f9f"];
-    for(let i=0;i<24;i++){
-      const c=document.createElement("i");
-      c.className="confetti"; c.style.left=Math.random()*100+"vw";
-      c.style.background=colors[Math.floor(Math.random()*colors.length)];
-      c.style.animationDuration=(2.5+Math.random()*1.8)+"s";
-      c.style.animationDelay=(Math.random()*.35)+"s";
-      c.style.setProperty("--dx",(Math.random()*120-60)+"px");
-      document.body.appendChild(c); setTimeout(()=>c.remove(),5000);
+    const colors=["#f2c76d","#fff0bb","#8fd9a5","#8ebcff","#ff9d9d"];
+    for(let i=0;i<18;i++){
+      const c=document.createElement("i");c.className="confetti";
+      c.style.left=Math.random()*100+"vw";c.style.background=colors[Math.floor(Math.random()*colors.length)];
+      c.style.animationDuration=(2.4+Math.random()*1.5)+"s";c.style.setProperty("--dx",(Math.random()*100-50)+"px");
+      document.body.appendChild(c);setTimeout(()=>c.remove(),4300)
     }
   }
 
   document.getElementById("restartBtn").onclick=()=>{
-    final.style.display="none"; start.style.display="block";
-    scrollTo({top:0,behavior:"smooth"});
+    final.style.display="none";start.style.display="block";window.scrollTo(0,0);
   };
+
+  // Запрещаем Safari увеличивать страницу двойным тапом или жестом масштаба.
+  let lastTouchEnd=0;
+  document.addEventListener("touchend",e=>{
+    const now=Date.now();
+    if(now-lastTouchEnd<300&&!e.target.closest("#board"))e.preventDefault();
+    lastTouchEnd=now;
+  },{passive:false});
+  document.addEventListener("gesturestart",e=>e.preventDefault(),{passive:false});
+  document.addEventListener("gesturechange",e=>e.preventDefault(),{passive:false});
+  document.addEventListener("dblclick",e=>e.preventDefault(),{passive:false});
+
+  renderCrossword();renderClues();
 })();
 </script>
 </body>
