@@ -75,6 +75,13 @@ font-size:10px;font-weight:900;background:rgba(255,255,255,.09);color:var(--gold
 .clue.done{border-color:rgba(143,217,165,.25);background:rgba(143,217,165,.07)}
 .clue.done::after{content:"✓";position:absolute;right:11px;top:9px;color:var(--green);font-weight:900}
 .clue b{color:var(--gold2)}
+.helper{
+  max-width:570px;margin:-3px auto 10px;padding:10px 12px;border-radius:13px;
+  background:rgba(242,199,109,.07);border:1px solid rgba(242,199,109,.13);
+  color:#dce4ec;font-size:13px;line-height:1.42;text-align:center
+}
+.helper b{color:var(--gold2)}
+.helper span{color:var(--muted)}
 
 .current{height:29px;text-align:center;font-size:18px;font-weight:900;letter-spacing:.13em;color:var(--gold2)}
 .board{width:min(318px,86vw);aspect-ratio:1;margin:0 auto;position:relative;touch-action:none;user-select:none;-webkit-user-select:none}
@@ -131,6 +138,7 @@ box-shadow:0 7px 16px rgba(0,0,0,.25);z-index:2}
 
       <div class="sectionTitle">подсказки</div>
       <div class="clues" id="clues"></div>
+      <div class="helper" id="helper"></div>
 
       <div class="current" id="current"></div>
       <div class="board" id="board">
@@ -140,7 +148,7 @@ box-shadow:0 7px 16px rgba(0,0,0,.25);z-index:2}
 
       <div class="status" id="status">Выбери подсказку.</div>
       <div class="actions">
-        <button class="btn" id="hintBtn" type="button">Открыть букву</button>
+        <button class="btn" id="hintBtn" type="button">Ещё подсказка</button>
         <button class="btn" id="shuffleBtn" type="button">Перемешать</button>
       </div>
     </section>
@@ -152,7 +160,7 @@ box-shadow:0 7px 16px rgba(0,0,0,.25);z-index:2}
         Сегодня день рождения у самого <strong>лучшего</strong>, самого <strong>смешного</strong>
         и самого <strong>крепкого</strong> папы на свете!<br><br>
         Желаем тебе крепкого здоровья, сил, спокойствия, удачи и побольше поводов смеяться.
-        Пусть рядом всегда будут люди, которые тебя ценят и любят.<br><br>
+        Пусть всё задуманное получается, а каждый день приносит что-нибудь хорошее.<br><br>
         Поздравляем и очень тебя <strong>любим!</strong> ❤️
       </p>
       <button class="btn primary" id="restartBtn" type="button">Пройти ещё раз</button>
@@ -166,33 +174,39 @@ box-shadow:0 7px 16px rgba(0,0,0,.25);z-index:2}
     {
       n:1, word:"ЛУЧШЕГО", row:3, col:2, dir:"H",
       clue:"Сегодня день рождения у самого <b>________</b>...",
-      extras:["А","Р"]
+      hint:"«Самый-самый» — одним словом. Начинается на «Л».",
+      easy:[0], extras:["А","Р"]
     },
     {
       n:2, word:"СМЕШНОГО", row:0, col:5, dir:"V",
       clue:"...самого <b>________</b>...",
-      extras:["А"]
+      hint:"Тот, кто умеет нас рассмешить. Начинается на «С».",
+      easy:[0], extras:["А"]
     },
     {
       n:3, word:"КРЕПКОГО", row:5, col:0, dir:"H",
       clue:"...и самого <b>________</b>...",
-      extras:["А"]
+      hint:"Сильный, стойкий, надёжный. Начинается на «К».",
+      easy:[0], extras:["А"]
     },
     {
       n:4, word:"ПАПЫ", row:5, col:3, dir:"V",
       clue:"...<b>____</b> на свете.",
-      extras:["К","Р"]
+      hint:"Кто ты для нас? Последняя буква — «Ы».",
+      easy:[3], extras:["К","Р"]
     },
     {
       n:5, word:"ЛЮБИМ", row:1, col:1, dir:"H",
       clue:"Поздравляем и очень <b>_____</b>!",
-      extras:["А","Р"]
+      hint:"Самое главное слово от всей семьи. Начинается на «Л».",
+      easy:[0], extras:["А","Р"]
     }
   ];
 
   const start=document.getElementById("start"), game=document.getElementById("game"), final=document.getElementById("final");
   const crossword=document.getElementById("crossword"), clues=document.getElementById("clues");
   const board=document.getElementById("board"), trace=document.getElementById("trace"), current=document.getElementById("current");
+  const helper=document.getElementById("helper");
   const status=document.getElementById("status"), progress=document.getElementById("progress"), count=document.getElementById("count");
 
   const cellMap=new Map();
@@ -216,7 +230,7 @@ box-shadow:0 7px 16px rgba(0,0,0,.25);z-index:2}
   for(const [k,c] of cellMap){
     if(c.members.length>1) prefilled.add(k);
   }
-  answers.forEach((a,i)=>revealed.set(i,new Set()));
+  answers.forEach((a,i)=>revealed.set(i,new Set(a.easy||[])));
 
   function shuffle(a){
     const b=[...a];
@@ -284,6 +298,7 @@ box-shadow:0 7px 16px rgba(0,0,0,.25);z-index:2}
 
   function setActive(i){
     active=i; resetSelection(); renderCrossword(); renderClues(); renderWheel();
+    helper.innerHTML="<b>Намёк:</b> "+answers[i].hint+" <span>("+answers[i].word.length+" букв)</span>";
     status.textContent="Собери ответ на подсказку №"+answers[i].n+".";
     status.className="status";
   }
@@ -398,7 +413,7 @@ box-shadow:0 7px 16px rgba(0,0,0,.25);z-index:2}
 
   document.getElementById("startBtn").onclick=()=>{
     start.style.display="none";game.style.display="block";
-    active=0;solved.clear();answers.forEach((a,i)=>revealed.set(i,new Set()));
+    active=0;solved.clear();answers.forEach((a,i)=>revealed.set(i,new Set(a.easy||[])));
     updateProgress();setActive(0);
   };
 
