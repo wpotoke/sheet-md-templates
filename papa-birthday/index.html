@@ -4,79 +4,71 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#101827">
+<meta name="theme-color" content="#0e1726">
 <title>Папе — с днём рождения!</title>
 <style>
 :root{
-  --bg:#0c1321;--bg2:#17263d;--panel:#18283d;--text:#fffaf1;--muted:#b6c1cf;
-  --gold:#f2c86f;--gold2:#ffe5a1;--green:#92dda8;--red:#ff9d9d;--line:rgba(255,255,255,.12)
+  --bg:#0d1522;--bg2:#17283f;--panel:#18283d;--text:#fffaf2;--muted:#b8c2cf;
+  --gold:#f2c86f;--gold2:#ffe6a4;--green:#8fd9a5;--red:#ff9f9f;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:
-radial-gradient(circle at 50% -10%,rgba(77,133,192,.32),transparent 36%),
-linear-gradient(180deg,var(--bg),var(--bg2) 55%,#08101b);color:var(--text)}
+html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--text);
+background:linear-gradient(180deg,var(--bg),var(--bg2) 58%,#09111d)}
 body{min-height:100svh;overscroll-behavior:none}
 button{font:inherit}
-.app{width:min(720px,100%);margin:auto;padding:max(16px,env(safe-area-inset-top)) 12px max(36px,env(safe-area-inset-bottom))}
-.hero{text-align:center;padding:8px 10px 18px}
+.app{width:min(680px,100%);margin:auto;padding:max(16px,env(safe-area-inset-top)) 10px max(32px,env(safe-area-inset-bottom))}
+.hero{text-align:center;padding:7px 8px 16px}
 .kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);margin-bottom:8px}
-.hero h1{font-size:clamp(30px,8vw,52px);line-height:1.05;margin:0 0 10px}
-.hero p{margin:0;color:var(--muted);font-size:15px;line-height:1.5}
-.card{background:rgba(23,39,60,.95);border:1px solid var(--line);border-radius:28px;padding:18px 12px 22px;
-box-shadow:0 24px 70px rgba(0,0,0,.3)}
-.start{text-align:center;padding:12px 8px 6px}
-.start .lock{font-size:56px;margin-bottom:8px}
+.hero h1{font-size:clamp(30px,8vw,50px);line-height:1.05;margin:0 0 8px}
+.hero p{margin:0;color:var(--muted);font-size:14px;line-height:1.45}
+.card{background:#17263a;border:1px solid rgba(255,255,255,.1);border-radius:26px;padding:17px 11px 21px;box-shadow:0 22px 55px rgba(0,0,0,.26)}
+.start{text-align:center;padding:14px 8px 8px}
+.start .icon{font-size:54px;margin-bottom:7px}
 .start h2{font-size:27px;margin:0 0 10px}
-.start p{max-width:520px;margin:0 auto 8px;color:var(--muted);line-height:1.55}
-.rule{max-width:510px;margin:18px auto 3px;padding:14px 16px;border-radius:17px;background:rgba(255,255,255,.045);
-border:1px solid rgba(255,255,255,.08);color:#dce3ea;line-height:1.5}
-.btn{border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.08);color:var(--text);
+.start p{max-width:500px;margin:0 auto;color:var(--muted);line-height:1.55}
+.rules{max-width:500px;margin:17px auto 3px;padding:13px 15px;border-radius:16px;background:rgba(255,255,255,.045);
+border:1px solid rgba(255,255,255,.08);line-height:1.5;color:#dfe5ec}
+.btn{border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.075);color:var(--text);
 border-radius:999px;padding:11px 16px;font-weight:800}
-.btn.primary{background:linear-gradient(135deg,var(--gold),#ffe6a8);color:#21190a;border:0}
-.start .btn{margin-top:14px;padding:13px 22px;font-size:16px}
+.btn.primary{background:linear-gradient(135deg,var(--gold),#ffe8ad);color:#21190b;border:0}
+.start .btn{margin-top:15px;padding:13px 22px;font-size:16px}
 .game{display:none}
-.topline{display:flex;align-items:center;gap:11px;margin-bottom:13px}
-.progress{height:7px;background:rgba(255,255,255,.075);border-radius:999px;overflow:hidden;flex:1}
-.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--gold),#fff0bc);transition:.35s;width:25%}
-.count{font-size:12px;color:var(--muted)}
-.caption{text-align:center;color:#dbe2ea;font-size:14px;line-height:1.45;margin:0 5px 10px}
-.words{min-height:170px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px}
-.row{display:flex;gap:6px;justify-content:center}
-.cell{width:38px;height:42px;border-radius:8px 8px 5px 5px;background:rgba(255,255,255,.055);
-border-bottom:3px solid rgba(255,255,255,.4);display:grid;place-items:center;font-size:20px;font-weight:900;transition:.2s}
-.cell.hint{color:var(--gold2);border-color:var(--gold);background:rgba(242,200,111,.11)}
-.cell.solved{color:#08160d;background:var(--green);border-color:var(--green);transform:translateY(-1px)}
-.current{height:29px;text-align:center;font-weight:900;letter-spacing:.14em;color:var(--gold2);font-size:18px}
-.board{width:min(326px,88vw);aspect-ratio:1;margin:0 auto;position:relative;touch-action:none;user-select:none;-webkit-user-select:none}
+.topline{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.progress{height:7px;flex:1;background:rgba(255,255,255,.07);border-radius:999px;overflow:hidden}
+.progress span{display:block;height:100%;width:20%;background:linear-gradient(90deg,var(--gold),#fff0bc);transition:width .25s}
+.count{font-size:12px;color:var(--muted);white-space:nowrap}
+.label{text-align:center;font-size:13px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.cells{display:flex;justify-content:center;flex-wrap:wrap;gap:7px;min-height:50px;margin:0 0 8px}
+.cell{width:40px;height:46px;border-radius:9px 9px 5px 5px;background:rgba(255,255,255,.055);
+border-bottom:3px solid rgba(255,255,255,.4);display:grid;place-items:center;font-size:22px;font-weight:900;transition:.18s}
+.cell.hint{color:var(--gold2);border-color:var(--gold);background:rgba(242,200,111,.12)}
+.cell.solved{color:#07160c;background:var(--green);border-color:var(--green)}
+.current{height:32px;text-align:center;font-size:19px;font-weight:900;letter-spacing:.13em;color:var(--gold2);margin-top:2px}
+.board{width:min(326px,88vw);aspect-ratio:1;margin:0 auto 0;position:relative;touch-action:none;user-select:none;-webkit-user-select:none}
 .ring{position:absolute;inset:14%;border-radius:50%;border:1px solid rgba(255,255,255,.09);
-background:radial-gradient(circle,rgba(255,255,255,.065),rgba(255,255,255,.018) 64%,transparent 65%)}
+background:radial-gradient(circle,rgba(255,255,255,.065),rgba(255,255,255,.018) 65%,transparent 66%)}
 .board svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-#trace{fill:none;stroke:var(--gold);stroke-width:12;stroke-linecap:round;stroke-linejoin:round;opacity:.84}
-.letter{position:absolute;width:60px;height:60px;margin:-30px 0 0 -30px;border:0;border-radius:50%;padding:0;
-background:#fffdf8;color:#0b1624;display:grid;place-items:center;font-size:26px;font-weight:900;
-box-shadow:0 10px 24px rgba(0,0,0,.3);z-index:2;transition:transform .09s,background .09s}
-.letter.active{background:var(--gold);transform:scale(1.09)}
-.status{min-height:22px;text-align:center;color:var(--muted);font-size:13px;margin-top:-2px}
+#trace{fill:none;stroke:var(--gold);stroke-width:11;stroke-linecap:round;stroke-linejoin:round;opacity:.88}
+.letter{position:absolute;width:56px;height:56px;margin:-28px 0 0 -28px;border:0;border-radius:50%;padding:0;
+background:#fffdf7;color:#0b1624;display:grid;place-items:center;font-size:24px;font-weight:900;
+box-shadow:0 8px 18px rgba(0,0,0,.28);z-index:2;transition:transform .08s,background .08s}
+.letter.active{background:var(--gold);transform:scale(1.08)}
+.status{min-height:23px;text-align:center;color:var(--muted);font-size:13px;margin-top:-1px}
 .status.ok{color:var(--green)} .status.bad{color:var(--red)}
-.actions{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:9px}
-.reveal{display:none;margin:15px auto 0;max-width:540px;padding:14px;border-radius:17px;text-align:center;
-background:rgba(146,221,168,.07);border:1px solid rgba(146,221,168,.15);font-size:17px;line-height:1.5}
-.reveal.show{display:block;animation:up .35s ease}
-.reveal strong{color:var(--gold2)}
-.nextwrap{display:none;text-align:center;margin-top:12px}
-.nextwrap.show{display:block}
-.final{display:none;text-align:center;padding:14px 7px 5px}
-.final .emoji{font-size:62px}
-.final h2{font-size:clamp(32px,8vw,54px);margin:6px 0 17px}
-.final p{max-width:610px;margin:0 auto 20px;font-size:20px;line-height:1.65;font-weight:650}
+.actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:8px}
+.saved{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-top:14px;min-height:30px}
+.chip{padding:6px 9px;border-radius:999px;background:rgba(242,200,111,.11);border:1px solid rgba(242,200,111,.2);
+color:var(--gold2);font-size:12px;font-weight:800}
+.final{display:none;text-align:center;padding:15px 7px 6px}
+.final .emoji{font-size:58px}
+.final h2{font-size:clamp(31px,8vw,52px);margin:6px 0 16px}
+.final p{max-width:600px;margin:0 auto 20px;font-size:20px;line-height:1.62;font-weight:650}
 .final strong{color:var(--gold2)}
-.confetti{position:fixed;top:-18px;width:9px;height:17px;border-radius:3px;z-index:99;pointer-events:none;animation:fall linear forwards}
-@keyframes fall{to{transform:translate(var(--dx),110vh) rotate(760deg)}}
-@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.confetti{position:fixed;top:-18px;width:8px;height:15px;border-radius:3px;z-index:99;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translate(var(--dx),110vh) rotate(640deg)}}
 @media(max-width:430px){
- .app{padding-left:8px;padding-right:8px}.card{border-radius:24px;padding:16px 8px 20px}
- .cell{width:34px;height:39px;font-size:18px}.words{min-height:154px}
- .letter{width:56px;height:56px;margin:-28px 0 0 -28px;font-size:24px}
+ .app{padding-left:7px;padding-right:7px}.card{border-radius:23px;padding:15px 8px 19px}
+ .cell{width:35px;height:41px;font-size:19px}.letter{width:52px;height:52px;margin:-26px 0 0 -26px;font-size:22px}
  .final p{font-size:18px}
 }
 </style>
@@ -84,28 +76,28 @@ background:rgba(146,221,168,.07);border:1px solid rgba(146,221,168,.15);font-siz
 <body>
 <div class="app">
   <header class="hero">
-    <div class="kicker">маленькая игра для папы</div>
+    <div class="kicker">для папы</div>
     <h1>С днём рождения!</h1>
-    <p>Сначала — несколько уровней. Поздравление откроется в самом конце.</p>
+    <p>Пять секретных слов. Они и соберут поздравление.</p>
   </header>
 
   <main class="card">
     <section class="start" id="start">
-      <div class="lock">🔐</div>
-      <h2>Поздравление пока закрыто</h2>
-      <p>Правила ты знаешь: соединяй буквы пальцем и заполняй слова в клеточках.</p>
-      <div class="rule">В каждом уровне несколько слов из одного набора букв. Часть букв уже открыта, а если застрянешь — можно открыть ещё одну.</div>
-      <button class="btn primary" id="startBtn" type="button">Начать игру</button>
+      <div class="icon">🎁</div>
+      <h2>Открой поздравление</h2>
+      <p>Соединяй буквы пальцем, как в игре «Слова». В каждом раунде нужно собрать одно слово.</p>
+      <div class="rules">В кружке есть лишние буквы, а несколько клеток уже открыты. Если застрянешь — нажми «Открыть букву».</div>
+      <button class="btn primary" id="startBtn" type="button">Начать</button>
     </section>
 
     <section class="game" id="game">
       <div class="topline">
         <div class="progress"><span id="progress"></span></div>
-        <div class="count" id="count">1 / 4</div>
+        <div class="count" id="count">1 / 5</div>
       </div>
-      <p class="caption">Зажми первую букву и, не отпуская палец, проведи по остальным.</p>
 
-      <div class="words" id="words"></div>
+      <div class="label">секретное слово</div>
+      <div class="cells" id="cells"></div>
       <div class="current" id="current"></div>
 
       <div class="board" id="board">
@@ -113,16 +105,13 @@ background:rgba(146,221,168,.07);border:1px solid rgba(146,221,168,.15);font-siz
         <svg viewBox="0 0 330 330" preserveAspectRatio="none"><polyline id="trace" points=""></polyline></svg>
       </div>
 
-      <div class="status" id="status">Собери любое слово из клеточек.</div>
+      <div class="status" id="status">Зажми первую букву и веди пальцем дальше.</div>
       <div class="actions">
         <button class="btn" id="hintBtn" type="button">Открыть букву</button>
         <button class="btn" id="shuffleBtn" type="button">Перемешать</button>
       </div>
 
-      <div class="reveal" id="reveal"></div>
-      <div class="nextwrap" id="nextwrap">
-        <button class="btn primary" id="nextBtn" type="button">Следующий уровень →</button>
-      </div>
+      <div class="saved" id="saved"></div>
     </section>
 
     <section class="final" id="final">
@@ -131,11 +120,11 @@ background:rgba(146,221,168,.07);border:1px solid rgba(146,221,168,.15);font-siz
       <p>
         Сегодня день рождения у самого <strong>лучшего</strong>, самого <strong>смешного</strong>
         и самого <strong>крепкого</strong> папы на свете!<br><br>
-        Желаем тебе крепкого здоровья, много сил, удачи и побольше счастливых дней.
-        Оставайся таким же весёлым, сильным и любимым. Спасибо, что ты у нас такой.<br><br>
+        Желаем тебе крепкого здоровья, много сил, удачи и побольше хороших дней.
+        Оставайся таким же весёлым, сильным и родным.<br><br>
         Поздравляем и очень-очень тебя <strong>любим!</strong> ❤️
       </p>
-      <button class="btn primary" id="restartBtn" type="button">Сыграть ещё раз</button>
+      <button class="btn primary" id="restartBtn" type="button">Ещё раз</button>
     </section>
   </main>
 </div>
@@ -143,18 +132,19 @@ background:rgba(146,221,168,.07);border:1px solid rgba(146,221,168,.15);font-siz
 <script>
 (() => {
   const levels = [
-    {letters:["К","Р","О","Т","А"], words:["КРОТ","РОТ","КОТ","РАК","ТОК"], open:{"КРОТ":[1],"РОТ":[2],"КОТ":[0],"РАК":[1],"ТОК":[2]}, reveal:"Сегодня день рождения"},
-    {letters:["С","Л","О","Н"], words:["СЛОН","СОН","НОС"], open:{"СЛОН":[1],"СОН":[0],"НОС":[1]}, reveal:"у самого <strong>лучшего</strong>,"},
-    {letters:["П","А","Р","К"], words:["ПАРК","КАРП","ПАР","РАК"], open:{"ПАРК":[0],"КАРП":[1],"ПАР":[2],"РАК":[0]}, reveal:"самого <strong>смешного</strong> и самого <strong>крепкого</strong>"},
-    {letters:["Л","Е","Т","О"], words:["ЛЕТО","ТЕЛО","ЛОТ"], open:{"ЛЕТО":[1],"ТЕЛО":[0],"ЛОТ":[2]}, reveal:"папы на свете! ❤️"}
+    {word:"ЛУЧШЕГО", letters:["Л","У","Ч","Ш","Е","Г","О","А","Р"], open:[0,3]},
+    {word:"СМЕШНОГО", letters:["С","М","Е","Ш","Н","О","Г","О","А"], open:[1,4,7]},
+    {word:"КРЕПКОГО", letters:["К","Р","Е","П","К","О","Г","О","А"], open:[0,3,6]},
+    {word:"ПАПЫ", letters:["П","А","П","Ы","К","Р"], open:[1]},
+    {word:"ЛЮБИМ", letters:["Л","Ю","Б","И","М","А","Р"], open:[0,3]}
   ];
 
   const start=document.getElementById("start"), game=document.getElementById("game"), final=document.getElementById("final");
-  const wordsEl=document.getElementById("words"), board=document.getElementById("board"), trace=document.getElementById("trace");
-  const currentEl=document.getElementById("current"), statusEl=document.getElementById("status"), count=document.getElementById("count");
-  const progress=document.getElementById("progress"), revealEl=document.getElementById("reveal"), nextwrap=document.getElementById("nextwrap");
+  const cells=document.getElementById("cells"), board=document.getElementById("board"), trace=document.getElementById("trace");
+  const current=document.getElementById("current"), status=document.getElementById("status"), progress=document.getElementById("progress");
+  const count=document.getElementById("count"), saved=document.getElementById("saved");
 
-  let li=0, solved=new Set(), shown={}, nodes=[], selected=[], dragging=false;
+  let level=0, shown=new Set(), nodes=[], selected=[], dragging=false, pointer={x:0,y:0}, raf=0, completed=[];
 
   function shuffle(a){
     const b=[...a];
@@ -163,73 +153,73 @@ background:rgba(146,221,168,.07);border:1px solid rgba(146,221,168,.15);font-siz
   }
 
   function setup(){
-    solved=new Set(); shown={}; selected=[]; dragging=false;
-    const L=levels[li];
-    L.words.forEach(w=>shown[w]=new Set(L.open[w]||[]));
-    count.textContent=(li+1)+" / "+levels.length;
-    progress.style.width=((li+1)/levels.length*100)+"%";
-    revealEl.classList.remove("show"); nextwrap.classList.remove("show");
-    statusEl.textContent="Собери любое слово из клеточек."; statusEl.className="status";
-    renderWords(); renderLetters(shuffle(L.letters)); resetSelection();
+    const L=levels[level];
+    shown=new Set(L.open);
+    selected=[]; dragging=false;
+    count.textContent=(level+1)+" / "+levels.length;
+    progress.style.width=((level+1)/levels.length*100)+"%";
+    status.textContent="Зажми первую букву и веди пальцем дальше.";
+    status.className="status";
+    renderCells(); renderLetters(shuffle(L.letters)); renderSaved(); resetSelection();
   }
 
-  function renderWords(){
-    const L=levels[li]; wordsEl.innerHTML="";
-    L.words.forEach(word=>{
-      const row=document.createElement("div"); row.className="row";
-      [...word].forEach((ch,i)=>{
-        const c=document.createElement("div");
-        const done=solved.has(word), hint=shown[word].has(i);
-        c.className="cell"+(done?" solved":hint?" hint":"");
-        c.textContent=done||hint?ch:"";
-        row.appendChild(c);
-      });
-      wordsEl.appendChild(row);
+  function renderCells(solved=false){
+    const w=levels[level].word;
+    cells.innerHTML="";
+    [...w].forEach((ch,i)=>{
+      const c=document.createElement("div");
+      c.className="cell"+(solved?" solved":shown.has(i)?" hint":"");
+      c.textContent=solved||shown.has(i)?ch:"";
+      cells.appendChild(c);
+    });
+  }
+
+  function renderSaved(){
+    saved.innerHTML="";
+    completed.forEach(w=>{
+      const x=document.createElement("span");
+      x.className="chip"; x.textContent=w;
+      saved.appendChild(x);
     });
   }
 
   function renderLetters(chars){
     board.querySelectorAll(".letter").forEach(x=>x.remove());
     nodes=[];
-    const n=chars.length,cx=165,cy=165,r=n===4?112:118;
+    const n=chars.length, cx=165, cy=165;
+    const r=n<=6?112:n<=8?118:122;
     chars.forEach((ch,i)=>{
-      const a=-Math.PI/2+Math.PI*2*i/n, x=cx+Math.cos(a)*r, y=cy+Math.sin(a)*r;
+      const a=-Math.PI/2 + Math.PI*2*i/n;
+      const x=cx+Math.cos(a)*r, y=cy+Math.sin(a)*r;
       const b=document.createElement("button");
-      b.className="letter"; b.type="button"; b.textContent=ch;
+      b.type="button"; b.className="letter"; b.textContent=ch;
       b.style.left=(x/330*100)+"%"; b.style.top=(y/330*100)+"%";
       board.appendChild(b);
-      const node={el:b,char:ch,x,y}; nodes.push(node);
-      b.addEventListener("click",e=>{
-        if(dragging) return;
-        addNode(node);
-        const s=selected.map(v=>v.char).join("");
-        if(validWord(s)){accept(s);setTimeout(resetSelection,120)}
-        else if(!possiblePrefix(s)){statusEl.textContent="Такого слова здесь нет.";statusEl.className="status bad";setTimeout(resetSelection,420)}
-        e.preventDefault();
-      });
+      nodes.push({el:b,char:ch,x,y});
     });
-  }
-
-  function validWord(s){return levels[li].words.includes(s)&&!solved.has(s)}
-  function possiblePrefix(s){return levels[li].words.some(w=>!solved.has(w)&&w.startsWith(s))}
-
-  function addNode(n){
-    if(!n||selected.includes(n)) return;
-    selected.push(n); n.el.classList.add("active");
-    currentEl.textContent=selected.map(v=>v.char).join("");
-    if(navigator.vibrate) navigator.vibrate(6);
-    redraw();
   }
 
   function resetSelection(){
     selected.forEach(n=>n.el.classList.remove("active"));
-    selected=[]; dragging=false; currentEl.textContent=""; trace.setAttribute("points","");
+    selected=[]; dragging=false; current.textContent=""; trace.setAttribute("points","");
   }
 
-  function redraw(extra){
-    const pts=selected.map(n=>n.x+","+n.y);
-    if(extra&&selected.length) pts.push(extra.x+","+extra.y);
-    trace.setAttribute("points",pts.join(" "));
+  function addNode(n){
+    if(!n || selected.includes(n)) return;
+    selected.push(n); n.el.classList.add("active");
+    current.textContent=selected.map(v=>v.char).join("");
+    drawNow();
+  }
+
+  function hit(x,y){
+    const r=board.getBoundingClientRect(); let best=null, bd=Infinity;
+    const radius=Math.max(31,r.width*.092);
+    for(const n of nodes){
+      const nx=r.left+n.x/330*r.width, ny=r.top+n.y/330*r.height;
+      const d=Math.hypot(x-nx,y-ny);
+      if(d<radius && d<bd){best=n;bd=d}
+    }
+    return best;
   }
 
   function boardPoint(x,y){
@@ -237,73 +227,103 @@ background:rgba(146,221,168,.07);border:1px solid rgba(146,221,168,.15);font-siz
     return {x:(x-r.left)/r.width*330,y:(y-r.top)/r.height*330};
   }
 
-  function hitNode(x,y){
-    const r=board.getBoundingClientRect(); let best=null,bd=1e9;
-    nodes.forEach(n=>{
-      const nx=r.left+n.x/330*r.width, ny=r.top+n.y/330*r.height;
-      const d=Math.hypot(x-nx,y-ny), hit=Math.max(33,r.width*.1);
-      if(d<hit&&d<bd){best=n;bd=d}
-    });
-    return best;
+  function drawNow(){
+    const pts=selected.map(n=>n.x+","+n.y);
+    if(dragging && selected.length) pts.push(pointer.x+","+pointer.y);
+    trace.setAttribute("points",pts.join(" "));
   }
 
-  function begin(x,y){
-    const n=hitNode(x,y); if(!n) return false;
-    resetSelection(); dragging=true; addNode(n); redraw(boardPoint(x,y)); return true;
-  }
-  function move(x,y){
-    if(!dragging) return;
-    const n=hitNode(x,y); if(n) addNode(n); redraw(boardPoint(x,y));
-  }
-  function end(){
-    if(!dragging) return;
-    const s=selected.map(v=>v.char).join(""); dragging=false;
-    if(validWord(s)){accept(s);setTimeout(resetSelection,120)}
-    else {if(s){statusEl.textContent="«"+s+"» здесь нет. Попробуй ещё раз.";statusEl.className="status bad"}setTimeout(resetSelection,420)}
+  function scheduleDraw(){
+    if(raf) return;
+    raf=requestAnimationFrame(()=>{raf=0;drawNow()});
   }
 
-  board.addEventListener("pointerdown",e=>{
-    if(begin(e.clientX,e.clientY)){board.setPointerCapture?.(e.pointerId);e.preventDefault()}
-  });
-  board.addEventListener("pointermove",e=>{if(dragging){move(e.clientX,e.clientY);e.preventDefault()}});
-  board.addEventListener("pointerup",e=>{if(dragging){end();e.preventDefault()}});
+  function begin(e){
+    const n=hit(e.clientX,e.clientY);
+    if(!n) return;
+    resetSelection();
+    dragging=true;
+    pointer=boardPoint(e.clientX,e.clientY);
+    addNode(n);
+    board.setPointerCapture?.(e.pointerId);
+    e.preventDefault();
+  }
+
+  function move(e){
+    if(!dragging) return;
+    pointer=boardPoint(e.clientX,e.clientY);
+    const n=hit(e.clientX,e.clientY);
+    if(n) addNode(n);
+    scheduleDraw();
+    e.preventDefault();
+  }
+
+  function finish(e){
+    if(!dragging) return;
+    dragging=false;
+    const attempt=selected.map(v=>v.char).join("");
+    const target=levels[level].word;
+    if(attempt===target){
+      renderCells(true);
+      status.textContent="Верно!";
+      status.className="status ok";
+      completed.push(target);
+      renderSaved();
+      setTimeout(()=>{
+        if(level===levels.length-1){showFinal()}
+        else {level++;setup()}
+      },650);
+    }else{
+      status.textContent=attempt ? "Не то слово. Попробуй ещё раз." : "Попробуй ещё раз.";
+      status.className="status bad";
+      setTimeout(resetSelection,420);
+    }
+    e.preventDefault();
+  }
+
+  board.addEventListener("pointerdown",begin,{passive:false});
+  board.addEventListener("pointermove",move,{passive:false});
+  board.addEventListener("pointerup",finish,{passive:false});
   board.addEventListener("pointercancel",resetSelection);
 
-  function accept(word){
-    solved.add(word); renderWords();
-    statusEl.textContent="Есть: "+word; statusEl.className="status ok";
-    if(solved.size===levels[li].words.length){
-      statusEl.textContent="Уровень пройден!";
-      revealEl.innerHTML=levels[li].reveal; revealEl.classList.add("show");
-      if(li<levels.length-1) setTimeout(()=>nextwrap.classList.add("show"),450);
-      else setTimeout(showFinal,950);
-    }
-  }
-
   document.getElementById("hintBtn").onclick=()=>{
-    const L=levels[li], w=L.words.find(x=>!solved.has(x)); if(!w) return;
-    const hidden=[...w].map((_,i)=>i).filter(i=>!shown[w].has(i));
-    if(hidden.length){shown[w].add(hidden[0]);renderWords();statusEl.textContent="Открыл ещё одну букву.";statusEl.className="status"}
-    else {statusEl.textContent="В первом неразгаданном слове уже открыты все буквы."}
+    const w=levels[level].word;
+    const hidden=[...w].map((_,i)=>i).filter(i=>!shown.has(i));
+    if(!hidden.length){status.textContent="Все буквы уже открыты.";return}
+    shown.add(hidden[0]); renderCells();
+    status.textContent="Открыл ещё одну букву."; status.className="status";
   };
 
-  document.getElementById("shuffleBtn").onclick=()=>{resetSelection();renderLetters(shuffle(levels[li].letters));statusEl.textContent="Буквы перемешаны.";statusEl.className="status"};
-  document.getElementById("nextBtn").onclick=()=>{li++;setup()};
-  document.getElementById("startBtn").onclick=()=>{start.style.display="none";game.style.display="block";setup()};
+  document.getElementById("shuffleBtn").onclick=()=>{
+    resetSelection(); renderLetters(shuffle(levels[level].letters));
+    status.textContent="Буквы перемешаны."; status.className="status";
+  };
+
+  document.getElementById("startBtn").onclick=()=>{
+    start.style.display="none"; game.style.display="block"; completed=[]; level=0; setup();
+  };
 
   function showFinal(){
-    game.style.display="none";final.style.display="block";confetti();
+    game.style.display="none"; final.style.display="block"; confetti();
   }
+
   function confetti(){
-    const colors=["#f2c86f","#fff0bb","#92dda8","#8ebcff","#ff9d9d"];
-    for(let i=0;i<70;i++){
-      const c=document.createElement("i");c.className="confetti";
-      c.style.left=Math.random()*100+"vw";c.style.background=colors[Math.floor(Math.random()*colors.length)];
-      c.style.animationDuration=(2.7+Math.random()*2.7)+"s";c.style.animationDelay=(Math.random()*.5)+"s";
-      c.style.setProperty("--dx",(Math.random()*160-80)+"px");document.body.appendChild(c);setTimeout(()=>c.remove(),6100)
+    const colors=["#f2c86f","#fff0bd","#8fd9a5","#8ebcff","#ff9f9f"];
+    for(let i=0;i<24;i++){
+      const c=document.createElement("i");
+      c.className="confetti"; c.style.left=Math.random()*100+"vw";
+      c.style.background=colors[Math.floor(Math.random()*colors.length)];
+      c.style.animationDuration=(2.5+Math.random()*1.8)+"s";
+      c.style.animationDelay=(Math.random()*.35)+"s";
+      c.style.setProperty("--dx",(Math.random()*120-60)+"px");
+      document.body.appendChild(c); setTimeout(()=>c.remove(),5000);
     }
   }
-  document.getElementById("restartBtn").onclick=()=>{li=0;final.style.display="none";start.style.display="block";scrollTo({top:0,behavior:"smooth"})};
+
+  document.getElementById("restartBtn").onclick=()=>{
+    final.style.display="none"; start.style.display="block";
+    scrollTo({top:0,behavior:"smooth"});
+  };
 })();
 </script>
 </body>
